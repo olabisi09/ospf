@@ -1,0 +1,47 @@
+[
+  {
+    "occupation": "Pediatrician",
+    "availability": "12 hours",
+    "fee": "N400,000",
+    "status": "open",
+    "date": "24/02/2023",
+    "department": "Clinical",
+    "bScRequired": true
+  },
+  {
+    "occupation": "Cardiologist",
+    "availability": "8 hours",
+    "fee": "N600,000",
+    "status": "open",
+    "date": "15/03/2023",
+    "department": "Emergency Unit",
+    "bScRequired": false
+  },
+  {
+    "occupation": "Dermatologist",
+    "availability": "10 hours",
+    "fee": "N350,000",
+    "status": "closed",
+    "date": "02/04/2023",
+    "department": "Pharmacy",
+    "bScRequired": true
+  },
+  {
+    "occupation": "Orthopedic Surgeon",
+    "availability": "6 hours",
+    "fee": "N800,000",
+    "status": "open",
+    "date": "10/05/2023",
+    "department": "Toxicology Lab",
+    "bScRequired": true
+  },
+  {
+    "occupation": "Gynecologist",
+    "availability": "9 hours",
+    "fee": "N450,000",
+    "status": "closed",
+    "date": "18/06/2023",
+    "department": "Clinical",
+    "bScRequired": false
+  }
+]
