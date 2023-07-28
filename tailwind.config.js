@@ -20,7 +20,9 @@ module.exports = {
       'main-text': '#204672',
       'purple': '#8B11C5',
       'red': '#CF0000',
-      'description': '#B7B4B4'
+      'description': '#B7B4B4',
+      'orangeLight': '#FDF7F7',
+      'ellipses': '#D9D9D9'
     },
     extend: {
       // backgroundImage: {

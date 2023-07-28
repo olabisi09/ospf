@@ -1,28 +1,52 @@
+"use client";
+import { FormikProvider, FormikValues, useFormik } from "formik";
+import Link from "next/link";
+
 export default function Login() {
+  const formik = useFormik<FormikValues>({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: () => {
+      console.log("submit");
+    },
+  });
   return (
-    <div className="drawer drawer-end">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        {/* Page content here */}
-        <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">
-          Open drawer
-        </label>
-      </div>
-      <div className="drawer-side">
-        <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-white text-base-content">
-          {/* Sidebar content here */}
-          {/* <button className="ml-auto drawer-button btn btn-primary">
-            <Image src={Close} alt="close button" />
-          </button> */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <FormikProvider value={formik}>
+      <main className="flex flex-col justify-center items-center">
+        <form onSubmit={formik.handleSubmit} className="flex flex-col my-10">
+          <div className="flex flex-col px-20 py-12">
+            <h1 className="text-3xl text-left font-extrabold">Login</h1>
+            <section className="mt-12 flex flex-col gap-4">
+              <div className="form-control w-full max-w-xs mb-6">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="text"
+                  className="input input-bordered w-full max-w-xs border-gray-light focus:outline-main"
+                />
+              </div>
+              <div className="form-control w-full max-w-xs mb-6">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  className="input input-bordered w-full max-w-xs border-gray-light focus:outline-main"
+                />
+              </div>
+            </section>
+            <Link href="/forgotPassword" className="text-end">
+              Forgot password?
+            </Link>
+            <button className="bg-main w-full mt-6 text-white py-4 rounded-tl-lg rounded-br-lg">
+              Login
+            </button>
+          </div>
+        </form>
+      </main>
+    </FormikProvider>
   );
 }

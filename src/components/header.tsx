@@ -33,7 +33,7 @@ const Header = () => {
               <Link href="/jobs">Jobs</Link>
             </li>
             <li>
-              <Link href="/">Register</Link>
+              <Link href="/register">Register</Link>
             </li>
             <li>
               <Link href="/login">Login</Link>
@@ -68,7 +68,7 @@ const Header = () => {
             Jobs
           </Link>
           <Link
-            href="/"
+            href="/register"
             className="hover:border-b-2 hover:border-b-main no-underline"
           >
             Register

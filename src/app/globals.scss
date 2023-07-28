@@ -6,3 +6,7 @@ html, body {
   height: 100%;
   background-color: #ffffff;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
