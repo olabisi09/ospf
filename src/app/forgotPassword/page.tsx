@@ -20,7 +20,7 @@ export default function ForgotPassword() {
               Forgot Password
             </h1>
             <p className="py-6">
-              Enter your email address and let's help get your account back
+              Enter your email address and let&apos;s help get your account back
             </p>
             <Field name="email" as={Input} label="Email" />
 
