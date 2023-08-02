@@ -23,8 +23,6 @@ export default function RootLayout({
           <Header />
           {children}
         </ReduxProvider>
-        {/* <Header />
-        {children} */}
       </body>
     </html>
   );

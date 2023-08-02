@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="navbar lg:px-20">
+    <header className="navbar lg:px-20 sticky top-0 left-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -81,39 +81,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-    </div>
-    // <header className="mx-20 my-2 hidden lg:flex justify-between ">
-    //   <div className="flex gap-4 items-center">
-    //     <Image src="/logo.svg" alt="Shiffts Logo" width={100} height={100} />
-    //     <h1 className="text-4xl">Shiffts</h1>
-    //   </div>
-    //   <div className="flex gap-20 items-center">
-    //     <Link
-    //       href="/"
-    //       className="hover:border-b-2 hover:border-b-main no-underline"
-    //     >
-    //       Home
-    //     </Link>
-    //     <Link
-    //       href="/jobs"
-    //       className="hover:border-b-2 hover:border-b-main no-underline"
-    //     >
-    //       Jobs
-    //     </Link>
-    //     <Link
-    //       href="/"
-    //       className="hover:border-b-2 hover:border-b-main no-underline"
-    //     >
-    //       Register
-    //     </Link>
-    //     <Link
-    //       href="/"
-    //       className="hover:border-b-2 hover:border-b-main no-underline"
-    //     >
-    //       Login
-    //     </Link>
-    //   </div>
-    // </header>
+    </header>
   );
 };
 
