@@ -1,6 +1,14 @@
+import { useFormikContext } from "formik";
 import Image from "next/image";
 
 const UploadResume = () => {
+  const { setFieldValue } = useFormikContext();
+
+  const handleResumeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    setFieldValue("resume", e.target.files?.[0]);
+  }
+
   return (
     <section className="px-11 py-8">
       <h1 className="text-3xl text-left font-extrabold">Upload Resume</h1>
@@ -14,7 +22,7 @@ const UploadResume = () => {
         <p className="text-lg text-orange text-center font-bold pt-4">
           Drag and drop or select file
         </p>
-        <input type="file" hidden />
+        <input name="resume" type="file" hidden accept="application/pdf" onChange={handleResumeUpload}/>
       </label>
     </section>
   );

@@ -1,7 +1,56 @@
+"use client";
+import Steps from "@/components/steps";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const CurrentStep = ({ step }: { step: number }) => {
+  switch (step) {
+    case 1:
+      return (
+        <Image
+          src="/medical-history.png"
+          alt="medical-history"
+          width={256}
+          height={268}
+        />
+      );
+    case 2:
+      return (
+        <Image
+          src="/doctor-with-clipboard.png"
+          alt="doctor-with-clipboard"
+          width={188}
+          height={456}
+        />
+      );
+    case 3:
+      return (
+        <Image
+          src="/medical-history.png"
+          alt="medical-history"
+          width={256}
+          height={268}
+        />
+      );
+  }
+};
+
 export default function Home() {
+  const [activeStep, setActiveStep] = useState(1);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setActiveStep((prev) => (prev === 3 ? 1 : prev + 1));
+  //   }, 2000); // Change this value to adjust the auto-scroll speed
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+
   return (
-    <main className="flex h-full flex-col">
-      <div className="h-full flex flex-col md:flex-row justify-between items-center px-8 md:px-20 py-14 gap-32">
+    <main className="flex flex-col">
+      <div className="h-full flex flex-col md:flex-row justify-between items-center px-8 md:px-20 py-24 gap-32">
         <section className="w-full md:w-1/2">
           <h1 className="text-4xl">
             Hire Medical <br />
@@ -26,8 +75,9 @@ export default function Home() {
             </button>
           </div>
         </section>
-        <section className="hidden md:block w-1/2 h-full bg-main-light">
-          Carousel
+        <section className="hidden md:flex flex-col items-center justify-center gap-8 w-1/2 h-full transition-all">
+          <CurrentStep step={activeStep} />
+          <Steps steps={3} activeStep={activeStep} />
         </section>
       </div>
     </main>

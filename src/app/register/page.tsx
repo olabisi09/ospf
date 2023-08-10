@@ -1,61 +1,48 @@
 "use client";
+import { formInitialValues, validationRules } from "@/components/form";
 import AccountVerification from "@/components/register/accountVerification";
 import RegistrationComplete from "@/components/register/complete";
 import Profile from "@/components/register/profile";
 import UploadResume from "@/components/register/uploadResume";
 import WorkExperience from "@/components/register/workExperience";
 import Steps from "@/components/steps";
-import { RootState } from "@/store/store";
-import { useActionCreator } from "@/utils/useActionCreator";
 import { FormikProvider, FormikValues, useFormik } from "formik";
-import { useSelector } from "react-redux";
-import * as Yup from "yup";
+import { useState } from "react";
 
 const CurrentStep = ({ step }: { step: number }) => {
   switch (step) {
-    case 1:
+    case 0:
       return <Profile />;
-    case 2:
+    case 1:
       return <WorkExperience />;
-    case 3:
+    case 2:
       return <UploadResume />;
-    case 4:
+    case 3:
       return <AccountVerification />;
-    case 5:
+    case 4:
       return <RegistrationComplete />;
   }
 };
 
 export default function Register() {
-  const { increment, decrement } = useActionCreator();
-  const activeStep = useSelector((state: RootState) => state?.step);
+  const [activeStep, setActiveStep] = useState(0);
+  const isFinalStep = activeStep === 4;
 
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("required"),
-    lastName: Yup.string().required("required"),
-    bio: Yup.string().required("required"),
-    email: Yup.string().required("required"),
-    phoneNumber: Yup.string().required("required"),
-    password: Yup.string().required("required"),
-    confirmPassword: Yup.string()
-      .required("required")
-      .oneOf([Yup.ref("password")], "Passwords must match"),
-  });
+  const goBack = () => setActiveStep((prev) => prev - 1);
+
   const formik = useFormik<FormikValues>({
-    initialValues: {
-      firstName: "",
-      lastName: "",
-      bio: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
+    initialValues: formInitialValues,
+    onSubmit: (values, actions) => {
+      if (isFinalStep) console.log(values);
+      else {
+        setActiveStep((prev) => prev + 1);
+        actions.setTouched({});
+        actions.setSubmitting(false)
+      }
     },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validationSchema: validationSchema,
+    validationSchema: validationRules[activeStep],
   });
+
   return (
     <FormikProvider value={formik}>
       <main className="flex flex-col justify-center items-center">
@@ -63,15 +50,19 @@ export default function Register() {
           onSubmit={formik.handleSubmit}
           className="flex flex-col my-10 lg:border-2 lg:overflow-y-auto lg:border-gray lg:rounded-lg"
         >
-          <section className="flex lg:gap-80 items-center justify-between px-4 py-4 lg:border-b-2">
+          <section
+            className={`flex lg:gap-80 items-center justify-between px-4 py-4 lg:border-b-2`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="43"
               height="49"
-              className="w-6 h-6 lg:w-10 lg:h-10"
+              className={`${
+                activeStep + 1 === 1 ? "invisible" : "visible"
+              } w-6 h-6 lg:w-10 lg:h-10`}
               viewBox="0 0 43 49"
               fill="none"
-              onClick={() => decrement()}
+              onClick={goBack}
             >
               <path
                 d="M9.3684 22.8647H35.7366C36.0862 22.8647 36.4216 23.0206 36.6688 23.298C36.9161 23.5754 37.055 23.9516 37.055 24.3439C37.055 24.7362 36.9161 25.1125 36.6688 25.3899C36.4216 25.6673 36.0862 25.8231 35.7366 25.8231H9.3684C9.01873 25.8231 8.68339 25.6673 8.43614 25.3899C8.18889 25.1125 8.04999 24.7362 8.04999 24.3439C8.04999 23.9516 8.18889 23.5754 8.43614 23.298C8.68339 23.0206 9.01873 22.8647 9.3684 22.8647Z"
@@ -84,9 +75,10 @@ export default function Register() {
             </svg>
             <Steps steps={5} activeStep={activeStep} />
             <button
-              onClick={() => increment()}
-              //disabled={!(formik.isValid && formik.dirty)}
-              className="bg-main lg:w-64 text-white p-4 rounded-tl-lg rounded-br-lg"
+              type="submit"
+              className={`bg-main ${
+                activeStep === 5 ? "invisible" : "visible"
+              } lg:w-64 text-white p-4 rounded-tl-lg rounded-br-lg`}
             >
               Continue
             </button>

@@ -10,7 +10,7 @@ const Steps = ({ steps, activeStep }: StepsProps) => {
         <div
           key={index}
           className={`rounded-full w-2 h-2 lg:w-3 lg:h-3 ${
-            activeStep - 1 === index ? "bg-main" : "bg-[#D9D9D9]"
+            activeStep === index ? "bg-main" : "bg-[#D9D9D9]"
           }`}
         ></div>
       ))}

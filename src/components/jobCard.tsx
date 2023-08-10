@@ -12,7 +12,7 @@ export interface Job {
 
 const JobCard = ({ job }: { job: Job }) => {
   return (
-    <div className="w-full flex flex-col lg:flex-row items-start gap-4 px-6 py-6 rounded-lg border-t-4 border-b-4 border-t-purple border-b-purple shadow-md">
+    <div className="w-full flex flex-col lg:flex-row items-start gap-4 px-6 py-6 rounded-lg border-t-4 border-b-4 border-t-orange border-b-orange shadow-md">
       <Image src="/doctor.svg" alt="user" width={100} height={100} />
       <div className="flex flex-col gap-4 w-full">
         <div className="flex justify-between">

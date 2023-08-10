@@ -1,8 +1,18 @@
 import { Field } from "formik";
 import Input from "../input";
 import TextArea from "../textarea";
+import Select from "../select";
 
 const WorkExperience = () => {
+  const options = (
+    <>
+      <option>RN</option>
+      <option>B.Sc Nursing</option>
+      <option>B.Med</option>
+      <option>Midwifery</option>
+      <option>Pediatrics</option>
+    </>
+  )
   return (
     <section className="px-11 py-8">
       <h1 className="text-3xl text-left font-extrabold">Work Experience</h1>
@@ -11,7 +21,7 @@ const WorkExperience = () => {
         rest <br /> through your cv. That&apos;s fair right?
       </p>
 
-      <Field name="workplace" as={Input} label="Last place you worked" />
+      <Field name="companyName" as={Input} label="Last place you worked" />
 
       <div className="flex flex-col lg:flex-row lg:gap-16">
         <Field name="startDate" as={Input} type="date" label="Start date" />
@@ -29,18 +39,7 @@ const WorkExperience = () => {
       </div>
 
       <Field name="responsibilities" as={TextArea} label="Responsibilities" />
-      <div className="form-control w-full max-w-xs mb-6">
-        <label className="label">
-          <span className="label-text">Qualification</span>
-        </label>
-        <select className="select select-bordered border-gray-light focus:outline-gray-light">
-          <option>RN</option>
-          <option>B.Sc Nursing</option>
-          <option>B.Med</option>
-          <option>Midwifery</option>
-          <option>Pediatrics</option>
-        </select>
-      </div>
+      <Field name="qualification" as={Select} label="Qualification" options={options}/>
     </section>
   );
 };

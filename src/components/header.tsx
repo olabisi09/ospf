@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="navbar lg:px-20 sticky top-0 left-0">
+    <header className="navbar bg-white lg:px-20 sticky top-0 left-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
