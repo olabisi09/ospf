@@ -13,14 +13,14 @@ export const formInitialValues = {
   startDate: "",
   endDate: "",
   responsibilities: "",
-  //qualification: "",
+  qualification: "",
   resume: "",
   verificationCode: ""
 }
 
 export const validationRules = [
   Yup.object().shape({
-    photo: Yup.mixed().required("required")
+    photo: Yup.mixed().required("*required")
     .test('fileFormat', '*Only .png and .jpg files are allowed', value => {
       if (value) {
         const supportedFormats = ['image/jpg', 'image/png'];

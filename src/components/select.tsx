@@ -11,13 +11,19 @@ const Select: React.FC<SelectProps & FieldHookConfig<string> & any> = (props) =>
   
   return (
     <div className="form-control w-full max-w-xs mb-6">
-        <label className="label">
-          <span className="label-text">{label}</span>
+      <label className="label">
+        <span className="label-text">{label}</span>
+      </label>
+      <select {...field} {...rest} className="select select-bordered border-gray-light focus:outline-gray-light">
+        {options}
+      </select>
+      {meta.touched && meta.error ? (
+        <label className="text-red">
+            <span>&#42;</span>
+            {meta.error}
         </label>
-        <select {...field} {...rest} className="select select-bordered border-gray-light focus:outline-gray-light">
-          {options}
-        </select>
-      </div>
+      ) : null}
+    </div>
   )
 }
 

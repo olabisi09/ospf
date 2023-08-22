@@ -3,6 +3,15 @@ import OTPInput from "react-otp-input";
 
 const AccountVerification = () => {
   const [otp, setOtp] = useState("");
+  const inputStyle = {
+    backgroundColor: "#FDF7F7",
+    border: "none",
+    width: "4rem",
+    height: "5rem",
+    borderRadius: "1.25rem",
+    fontSize: "2rem",
+    outline: "none",
+  }
 
   return (
     <section className="px-11 py-8">
@@ -16,15 +25,16 @@ const AccountVerification = () => {
           value={otp}
           onChange={setOtp}
           numInputs={5}
-          //inputType="number"
+          inputType="tel"
           renderSeparator={<span></span>}
           renderInput={(props) => <input {...props} />}
           containerStyle={
-            "w-full flex lg:gap-6 justify-between lg:justify-center"
+            "w-full flex gap-6 lg:justify-center"
           }
-          inputStyle={
-            "bg-orangeLight focus:outline-orange focus:border-none rounded-lg !w-12 h-12 !lg:w-32 lg:h-32 lg:text-3xl text-center font-bold"
-          }
+          inputStyle={inputStyle}
+          // inputStyle={
+          //   "bg-orangeLight focus:outline-orange focus:border-none rounded-lg w-24 lg:text-3xl text-center font-bold"
+          // }
         />
 
         <button className="bg-main w-auto text-white p-4 rounded-tl-lg rounded-br-lg">

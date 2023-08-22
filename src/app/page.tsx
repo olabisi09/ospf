@@ -7,31 +7,52 @@ const CurrentStep = ({ step }: { step: number }) => {
   switch (step) {
     case 1:
       return (
-        <Image
-          src="/medical-history.png"
-          alt="medical-history"
-          width={256}
-          height={268}
-        />
+        <div className="flex flex-col justify-between items-center">
+          <Image
+            src="/carousel-1.svg"
+            alt="vaccinations"
+            width={300}
+            height={300}
+          />
+          <p className="text-center">Choose professionals from a range of various experiences and qualifications</p>
+        </div>
       );
     case 2:
       return (
-        <Image
-          src="/doctor-with-clipboard.png"
-          alt="doctor-with-clipboard"
-          width={188}
-          height={456}
-        />
+        <div className="flex flex-col justify-between">
+          <Image
+            src="/carousel-2.svg"
+            alt="vaccinations"
+            width={300}
+            height={300}
+          />
+          <p className="text-center">Book Specialists ahead of time.</p>
+        </div>
       );
     case 3:
       return (
-        <Image
-          src="/medical-history.png"
-          alt="medical-history"
-          width={256}
-          height={268}
-        />
+        <div className="flex flex-col justify-between">
+          <Image
+            src="/carousel-3.svg"
+            alt="vaccinations"
+            width={300}
+            height={300}
+          />
+          <p className="text-center">Fill in for freinds annd unavailable staff and enjoy flexibility.</p>
+        </div>
       );
+      case 4:
+        return (
+          <div className="flex flex-col justify-between">
+          <Image
+            src="/carousel-4.svg"
+            alt="vaccinations"
+            width={300}
+            height={300}
+          />
+          <p className="text-center">Faster renumeration faster than your 9-6 fulltimes roles</p>
+        </div>
+        );
   }
 };
 
@@ -40,8 +61,8 @@ export default function Home() {
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
-  //     setActiveStep((prev) => (prev === 3 ? 1 : prev + 1));
-  //   }, 2000); // Change this value to adjust the auto-scroll speed
+  //     setActiveStep((prev) => (prev === 4 ? 1 : prev + 1));
+  //   }, 4000); // Change this value to adjust the auto-scroll speed
 
   //   return () => {
   //     clearInterval(interval);
@@ -75,9 +96,11 @@ export default function Home() {
             </button>
           </div>
         </section>
-        <section className="hidden md:flex flex-col items-center justify-center gap-8 w-1/2 h-full transition-all">
-          <CurrentStep step={activeStep} />
-          <Steps steps={3} activeStep={activeStep} />
+        <section className="hidden md:flex flex-col items-center justify-center gap-8 w-1/2 h-full">
+          <div className="border-main border-2 p-16 rounded-md transition-all">
+            <CurrentStep step={activeStep} />
+          </div>
+          <Steps steps={4} activeStep={activeStep - 1} />
         </section>
       </div>
     </main>

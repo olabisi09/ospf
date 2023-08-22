@@ -4,14 +4,11 @@ import Input from "../input";
 import TextArea from "../textarea";
 
 interface ProfileProps {
-  photo: File;
-}
-interface Props {
-  key: keyof ProfileProps;
+  photo: string;
 }
 
 const Profile = () => {
-  const { setFieldValue, touched, errors } = useFormikContext<FormData>();
+  const { setFieldValue, touched, errors } = useFormikContext<ProfileProps>();
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
@@ -30,12 +27,12 @@ const Profile = () => {
       <label className="cursor-pointer bg-orangeLight flex justify-center items-center p-10 lg:w-1/5 rounded-3xl mt-4">
         <Image src={"/camera.svg"} alt={"camera"} width={50} height={50} />
         <input name="photo" type="file" hidden accept="image/png, image/jpg" onChange={handlePhotoChange}/>
-        <p>
-          {touched[photo] && errors?.phoneNumbers ? (
-            <span style={{ color: 'red' }}>{formik?.errors?.phoneNumbers.toString()}</span>
+      </label>
+      <p>
+          {touched.photo && errors?.photo ? (
+            <span style={{ color: 'red' }}>{errors?.photo?.toString()}</span>
           ) : null}
         </p>
-      </label>
 
       <div className="flex flex-col lg:flex-row lg:gap-16 mt-4">
         <Field name="firstName" as={Input} label="First name" grow />

@@ -1,6 +1,7 @@
 "use client";
 import Input from "@/components/input";
 import { Field, FormikProvider, FormikValues, useFormik } from "formik";
+import Image from "next/image";
 
 export default function ResetPassword() {
   const formik = useFormik<FormikValues>({
@@ -14,7 +15,7 @@ export default function ResetPassword() {
   return (
     <FormikProvider value={formik}>
       <main className="flex flex-col justify-center items-center">
-        <form onSubmit={formik.handleSubmit} className="flex flex-col my-10">
+        <form onSubmit={formik.handleSubmit} className="flex my-10 items-center">
           <div className="flex flex-col px-20 py-12">
             <h1 className="text-3xl text-left font-extrabold">
               Reset Password
@@ -37,6 +38,7 @@ export default function ResetPassword() {
               Reset Password
             </button>
           </div>
+          <Image className="hidden lg:block" src={'/reset-password-pic.svg'} alt="doctors" width={400} height={400}/>
         </form>
       </main>
     </FormikProvider>
